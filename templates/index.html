@@ -7,18 +7,11 @@
   </head>
   <body>
     <h1>Credit Score Prediction</h1>
-    <form id="predictionForm">
-      <label for="features">Enter Features:</label><br />
+    <form action="/predict" method="post">
+      <label for="features">Features:</label><br />
       <textarea id="features" name="features" rows="10" cols="100"></textarea
       ><br />
-      <input
-        type="text"
-        id="features"
-        name="features"
-        placeholder="Enter features separated by comma"
-        required
-      /><br /><br />
-      <button type="submit">Predict</button>
+      <input type="submit" value="Predict" />
     </form>
     <div id="predictionResult"></div>
 
