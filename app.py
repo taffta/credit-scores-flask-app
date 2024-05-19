@@ -7,7 +7,9 @@ app = Flask(__name__)
 model = joblib.load('credit scores best model')
 
 
-
+@app.route('/')
+def index():
+    return 'Welcome to the Credit Score Prediction API!'
 
 
 @app.route('/predict', methods=['POST'])
