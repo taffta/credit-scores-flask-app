@@ -13,7 +13,7 @@
       ><br />
       <input type="submit" value="Predict" />
     </form>
-    <div id="predictionResult"></div>
+    <label id="predictionResult" placeholder="Predicted Credit Score"></label>
 
     <script>
       document
@@ -34,10 +34,9 @@
           })
             .then((response) => response.json())
             .then((data) => {
-              const predictionResult =
-                document.getElementById("predictionResult");
-              predictionResult.innerHTML = `Predicted Credit Score: ${data.prediction}`;
-              predictionResult.style.display = "block"; // Ensure the prediction result is visible
+              document.getElementById(
+                "predictionResult"
+              ).innerText = `Predicted Credit Score: ${data.prediction}`;
             })
             .catch((error) => {
               console.error("Error:", error);
