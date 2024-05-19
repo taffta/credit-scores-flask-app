@@ -8,71 +8,19 @@
   <body>
     <h1>Credit Score Prediction</h1>
     <form action="/predict" method="post">
-      <label for="features">Features:</label><br />
-      <textarea id="features" name="features" rows="10" cols="100"></textarea
+      <label for="features">Enter features separated by comma:</label><br />
+      <textarea
+        id="features"
+        name="features"
+        rows="10"
+        cols="50"
+        placeholder="Feature1, Feature2, Feature3, ..."
+      ></textarea
       ><br />
       <input type="submit" value="Predict" />
     </form>
-    <div id="predictionResult"></div>
-
-    <script>
-      document
-        .getElementById("predictionForm")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
-          const features = document
-            .getElementById("features")
-            .value.trim()
-            .split(",");
-
-          fetch("/predict", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              Month: features[0],
-              Age: features[1],
-              Occupation: features[2],
-              Annual_Income: features[3],
-              Monthly_Inhand_Salary: features[4],
-              Num_Bank_Accounts: features[5],
-              Num_Credit_Card: features[6],
-              Interest_Rate: features[7],
-              Delay_from_due_date: features[8],
-              Num_of_Delayed_Payment: features[9],
-              Changed_Credit_Limit: features[10],
-              Num_Credit_Inquiries: features[11],
-              Credit_Mix: features[12],
-              Outstanding_Debt: features[13],
-              Credit_Utilization_Ratio: features[14],
-              Credit_History_Age: features[15],
-              Payment_of_Min_Amount: features[16],
-              Total_EMI_per_month: features[17],
-              Amount_invested_monthly: features[18],
-              Payment_Behaviour: features[19],
-              Monthly_Balance: features[20],
-              "Count_Auto Loan": features[21],
-              "Count_Credit-Builder Loan": features[22],
-              "Count_Personal Loan": features[23],
-              "Count_Home Equity Loan": features[24],
-              "Count_Not Specified": features[25],
-              "Count_Mortgage Loan": features[26],
-              "Count_Student Loan": features[27],
-              "Count_Debt Consolidation Loan": features[28],
-              "Count_Payday Loan": features[29],
-            }),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              document.getElementById(
-                "predictionResult"
-              ).innerText = `Predicted Credit Score: ${data.prediction}`;
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
-        });
-    </script>
+    {% if error %}
+    <p style="color: red">{{ error }}</p>
+    {% endif %}
   </body>
 </html>
