@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import joblib
 
 app = Flask(__name__)
@@ -9,7 +9,7 @@ model = joblib.load('credit scores best model')
 
 @app.route('/')
 def index():
-    return 'Welcome to the Credit Score Prediction API!'
+    return render_template('index.html')
 
 
 @app.route('/predict', methods=['POST'])
