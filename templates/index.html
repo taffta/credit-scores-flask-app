@@ -34,9 +34,10 @@
           })
             .then((response) => response.json())
             .then((data) => {
-              document.getElementById(
-                "predictionResult"
-              ).innerText = `Predicted Credit Score: ${data.prediction}`;
+              const predictionResult =
+                document.getElementById("predictionResult");
+              predictionResult.innerHTML = `Predicted Credit Score: ${data.prediction}`;
+              predictionResult.style.display = "block"; // Ensure the prediction result is visible
             })
             .catch((error) => {
               console.error("Error:", error);
